@@ -40,6 +40,11 @@ angular.module('F1FeederApp.controllers', []).
            
             $location.path('/drivers/' + 1);
         }
+		$scope.SignUp=function(){
+           
+            $location.path('/register');
+        }
+
 
         ergastAPIservice.getDriverDetails($scope.id).success(function (response) {
             $scope.driver = response.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
@@ -48,4 +53,9 @@ angular.module('F1FeederApp.controllers', []).
         ergastAPIservice.getDriverRaces($scope.id).success(function (response) {
             $scope.races = response.MRData.RaceTable.Races;
         });
-    });
+    })
+	.controller('registerController', function ($scope, $routeParams, ergastAPIservice, $location) {   
+    this.register = function () {
+        alert('hi');
+    }
+});
